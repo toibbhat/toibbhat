@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const repo = 'toibbhat'; // Your GitHub repo name
+
 const nextConfig = {
-  output: 'export', // Required for GitHub Pages
-  basePath: process.env.NODE_ENV === 'production' ? '/toibbhat' : '', // Your repo name
+  output: 'export', // Static export for GitHub Pages
+  basePath: isProd ? `/${repo}` : '', // Add repo name ONLY in production
+  assetPrefix: isProd ? `https://${repo}.github.io/${repo}/` : '', // Full URL for GH Pages
   images: {
-    unoptimized: true, // Disable Next.js image optimization (required for static export)
+    unoptimized: true, // Required for static export
   },
-  trailingSlash: true, // Helps with routing
+  trailingSlash: true, // Ensures consistent paths
 };
+
 module.exports = nextConfig;

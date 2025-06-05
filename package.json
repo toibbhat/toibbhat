@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build && npm run export",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -d out -b gh-pages"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
